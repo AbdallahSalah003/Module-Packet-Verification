@@ -26,9 +26,31 @@ void first_last_modules(int &first, int &last, int n, int* modules)
             last = modules[i];
     }
 }
-int* assign_valid_invalid(int n, int* modules)
+int* assign_valid_invalid(int first, int last, int n, int* modules)
 {
+    int* validModules = new int[n];
 
+    validModules[0] = 1; // Default value for the first packet to be sent
+
+    int current, next;
+    for (int i = 1; i < n; ++i) 
+    {
+        current = modules[i-1];
+        next = modules[i];
+
+        if (current == last) 
+        {
+            // If current module is the last module then next module should be last or first
+            validModules[i] = (next == last || next == first) ? 1 : 0;
+        } 
+        else 
+        {
+            // If current module is not the last
+            validModules[i] = (next == current || next == current + 1) ? 1 : 0;
+        }
+    }
+
+    return validModules;
 }
 void csv_output(int n, int* modules, int* validModule)
 {
