@@ -88,8 +88,7 @@ void csv_output(int scenario, int n, int* modules, int* validModules)
         if (!file1.is_open()) {
             throw std::runtime_error("Failed to open the file.");
         }
-        file1 << "Scenario: ";
-        file1 << scenario << '\n';
+        file1 << "Scenario: " + std::to_string(scenario) + ",_,_"<< '\n';
         file1 << "PacketID,ModuleNumber,ValidModule\n";
 
         for (int i = 0; i < n; ++i) {
