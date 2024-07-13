@@ -52,7 +52,30 @@ int* assign_valid_invalid(int first, int last, int n, int* modules)
 
     return validModules;
 }
-void csv_output(int n, int* modules, int* validModule)
+void csv_output(int n, int* modules, int* validModules)
 {
+    std::ofstream file;
+    try {
+        file.open("output.csv");
+        
+        if (!file.is_open()) {
+            throw std::runtime_error("Failed to open the file.");
+        }
+        
+        file << "PacketID,ModuleNumber,ValidModule\n";
 
+        for (int i = 0; i < n; ++i) {
+            file << i + 1 << "," << modules[i] << "," 
+                << (validModules[i] ? "Yes" : "No") << "\n";
+        }
+    }
+    catch(const std::exception &e)
+    {
+        std::cerr << "There is an Error: "<<e.what()<< std::endl;
+    }
+
+    if(file.is_open()) 
+    {
+        file.close();
+    }
 }
