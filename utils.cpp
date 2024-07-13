@@ -3,7 +3,7 @@
 
 int* convert_argv_to_int_array(int argc, char* argv[]) {
     if (argc < 2) {
-        std::cerr << "No args to convert." << std::endl;
+        cerr << "No args to convert." << endl;
         return nullptr;
     }
 
@@ -11,35 +11,29 @@ int* convert_argv_to_int_array(int argc, char* argv[]) {
 
     for (int i = 0; i < argc-2; ++i) 
     {
-        try 
-        {
-            arr[i] = std::stoi(argv[i + 2]);
-        } 
-        catch (const std::invalid_argument& e) 
-        {
-            std::cerr<<"Invalid argument: " <<argv[i+ 2]<< std::endl;
-            delete[] arr;
-            return nullptr;
-        } 
-        catch (const std::out_of_range& e) 
-        {
-            std::cerr <<"Out of range: " << argv[i+2] << std::endl;
-            delete[]arr;
-            return nullptr;
-        }
+        arr[i] = stoi(argv[i + 2]);
     }
 
     return arr;
 }
-int validate_input(int packets, int* modules)
-{
-    for(int i=0; i<packets; ++i) 
-    {
-        if(modules[i] <= 0)
-            // "Invalid module number, all module number must be positive"
-            return 1;
+int validate_input(char** modules) {
+    for (int i = 1; modules[i] != nullptr; ++i) {
+        try 
+        {
+            int num = stoi(modules[i]);
+            if (num <= 0) 
+                return 1;
+        } 
+        catch (const invalid_argument& e) 
+        {
+            return 1; 
+        } 
+        catch (const out_of_range& e) 
+        {
+            return 1; 
+        }
     }
-    return 0;  // "Valid input"
+    return 0; // All elements are valid
 }
 void first_last_modules(int &first, int &last, int n, int* modules)
 {
@@ -83,12 +77,12 @@ int* assign_valid_invalid(int first, int last, int n, int* modules)
 void csv_output(int scenario, int n, int* modules, int* validModules)
 {
     try {
-        std::ofstream file1("output.csv", std::ios::app);
+        ofstream file1("output.csv", ios::app);
         
         if (!file1.is_open()) {
-            throw std::runtime_error("Failed to open the file.");
+            throw runtime_error("Failed to open the file.");
         }
-        file1 << "Scenario: " + std::to_string(scenario) + ",_,_"<< '\n';
+        file1 << "Scenario: " + to_string(scenario) + ",_,_"<< '\n';
         file1 << "PacketID,ModuleNumber,ValidModule\n";
 
         for (int i = 0; i < n; ++i) {
@@ -97,8 +91,8 @@ void csv_output(int scenario, int n, int* modules, int* validModules)
         }
         file1.close();
     }
-    catch(const std::exception &e)
+    catch(const exception &e)
     {
-        std::cerr << "There is an Error: "<<e.what()<< std::endl;
+        cerr << "There is an Error: "<<e.what()<< endl;
     }
 }
