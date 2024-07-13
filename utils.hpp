@@ -1,5 +1,6 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
+#include <climits>
 
 int validate_input(int packets, int* modules);
 void first_last_modules(int &first, int &last, int n, int* modules);

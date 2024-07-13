@@ -1,6 +1,5 @@
 #include "utils.hpp"
 
-
 int validate_input(int packets, int* modules)
 {
     if( packets <= 0 )
@@ -16,7 +15,16 @@ int validate_input(int packets, int* modules)
 }
 void first_last_modules(int &first, int &last, int n, int* modules)
 {
+    first = INT_MAX;
+    last = INT_MIN;
 
+    for (int i = 0; i < n; ++i) 
+    {
+        if (modules[i] < first) 
+            first = modules[i];
+        if (modules[i] > last)
+            last = modules[i];
+    }
 }
 int* assign_valid_invalid(int n, int* modules)
 {
