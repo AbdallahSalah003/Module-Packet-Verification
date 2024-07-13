@@ -15,11 +15,11 @@ Automated verification of packet sequences for module transitions using C++. Thi
 
 ## Documents
 
-1. Code Structure Diagram
-2. Report With All Test Cases
-3. Report With Unit Tests
-4. Sample output: output.csv
-5. README.md
+1. <a href="https://github.com/AbdallahSalah003/Module-Packet-Verification/blob/main/code-structure-diagram.png">Code Structure Diagram</a>
+2. <a href="https://github.com/AbdallahSalah003/Module-Packet-Verification/blob/main/all-test-cases.pdf">Report With All Test Cases</a>
+3. <a href="https://github.com/AbdallahSalah003/Module-Packet-Verification/blob/main/unit-testing.pdf">Report With Unit Tests</a>
+4. <a href="https://github.com/AbdallahSalah003/Module-Packet-Verification/blob/main/output.csv">Sample output: output.csv</a>
+5. <a href="https://github.com/AbdallahSalah003/Module-Packet-Verification/blob/main/README.md">README.md</a>
 
 ## Built With
 
