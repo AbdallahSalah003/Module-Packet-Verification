@@ -1,5 +1,36 @@
 #include "utils.hpp"
 
+
+int* convert_argv_to_int_array(int argc, char* argv[]) {
+    if (argc < 2) {
+        std::cerr << "No args to convert." << std::endl;
+        return nullptr;
+    }
+
+    int* arr = new int[argc - 1];
+
+    for (int i = 0; i < argc-1; ++i) 
+    {
+        try 
+        {
+            arr[i] = std::stoi(argv[i + 1]);
+        } 
+        catch (const std::invalid_argument& e) 
+        {
+            std::cerr<<"Invalid argument: " <<argv[i+ 1]<< std::endl;
+            delete[] arr;
+            return nullptr;
+        } 
+        catch (const std::out_of_range& e) 
+        {
+            std::cerr <<"Out of range: " << argv[i+1] << std::endl;
+            delete[]arr;
+            return nullptr;
+        }
+    }
+
+    return arr;
+}
 int validate_input(int packets, int* modules)
 {
     if( packets <= 0 )
