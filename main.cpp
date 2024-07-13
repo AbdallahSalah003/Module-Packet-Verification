@@ -19,10 +19,22 @@ int main(int argc, char** argv)
     else
     {
         cout<<"Valid inputs"<<'\n';
-        int first, last;
-        first_last_modules(first, last, packets, modules);
-        int* validModules =  assign_valid_invalid(first, last, packets, modules);
-        csv_output(packets, modules, validModules);
+        int counter = 1;
+        if (std::remove("output.csv") != 0) 
+        {
+            std::cerr << "Error deleting the file: " << "output.csv" << std::endl;
+        } 
+        else 
+        {
+            std::cout << "File successfully deleted: " << "output.csv" << std::endl;
+        }
+        do {
+                int first, last;
+                first_last_modules(first, last, packets, modules);
+                int* validModules =  assign_valid_invalid(first, last, packets, modules);
+                csv_output(counter++, packets, modules, validModules);
+                delete[] validModules;
+        } while (std::next_permutation(modules, modules + packets));
     }
     return 0;
     
