@@ -7,23 +7,23 @@ int* convert_argv_to_int_array(int argc, char* argv[]) {
         return nullptr;
     }
 
-    int* arr = new int[argc - 1];
+    int* arr = new int[argc - 2];
 
-    for (int i = 0; i < argc-1; ++i) 
+    for (int i = 0; i < argc-2; ++i) 
     {
         try 
         {
-            arr[i] = std::stoi(argv[i + 1]);
+            arr[i] = std::stoi(argv[i + 2]);
         } 
         catch (const std::invalid_argument& e) 
         {
-            std::cerr<<"Invalid argument: " <<argv[i+ 1]<< std::endl;
+            std::cerr<<"Invalid argument: " <<argv[i+ 2]<< std::endl;
             delete[] arr;
             return nullptr;
         } 
         catch (const std::out_of_range& e) 
         {
-            std::cerr <<"Out of range: " << argv[i+1] << std::endl;
+            std::cerr <<"Out of range: " << argv[i+2] << std::endl;
             delete[]arr;
             return nullptr;
         }
@@ -33,14 +33,11 @@ int* convert_argv_to_int_array(int argc, char* argv[]) {
 }
 int validate_input(int packets, int* modules)
 {
-    if( packets <= 0 )
-        // "Invalid packets number, packets number must be postive"
-        return 1;
     for(int i=0; i<packets; ++i) 
     {
         if(modules[i] <= 0)
             // "Invalid module number, all module number must be positive"
-            return 2;
+            return 1;
     }
     return 0;  // "Valid input"
 }
