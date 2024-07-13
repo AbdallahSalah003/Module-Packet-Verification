@@ -13,6 +13,14 @@ Automated verification of packet sequences for module transitions using C++. Thi
     <li>Last module can be followed by itself or first modules to be a valid packet</li>
 </ul>
 
+## Documents
+
+1. Code Structure Diagram
+2. Report With All Test Cases
+3. Report With Unit Tests
+4. Sample output: output.csv
+5. README.md
+
 ## Built With
 
 [![cpp][cpp]][cpp-url] [![gtest][gtest]][gtest-url]
