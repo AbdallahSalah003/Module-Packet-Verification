@@ -5,6 +5,7 @@
 #include <climits>
 #include <algorithm>
 #include <cstdio>
+#include <cmath>
 using namespace std;
 
 int* convert_argv_to_int_array(int argc, char* argv[]);

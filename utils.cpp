@@ -2,16 +2,16 @@
 
 
 int* convert_argv_to_int_array(int argc, char* argv[]) {
-    if (argc <= 2) {
+    if (argc < 2) {
         cerr << "No args to convert." << endl;
         return nullptr;
     }
 
-    int* arr = new int[argc - 1];
+    int* arr = new int[argc - 2];
 
-    for (int i = 0; i < argc-1; ++i) 
+    for (int i = 0; i < argc-2; ++i) 
     {
-        arr[i] = stoi(argv[i + 1]);
+        arr[i] = stoi(argv[i + 2]);
     }
 
     return arr;
@@ -37,8 +37,8 @@ int validate_input(char** modules) {
 }
 void first_last_modules(int &first, int &last, int n, int* modules)
 {
-    first = INT_MAX;
-    last = INT_MIN;
+    first = modules[0];
+    last = modules[0];
 
     for (int i = 0; i < n; ++i) 
     {
@@ -52,7 +52,7 @@ int* assign_valid_invalid(int first, int last, int n, int* modules)
 {
     int* validModules = new int[n];
 
-    validModules[0] = 1; // Default value for the first packet to be sent
+    validModules[0] = first; 
 
     int current, next;
     for (int i = 1; i < n; ++i) 
