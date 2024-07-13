@@ -17,10 +17,10 @@ int main(int argc, char** argv)
     }
     int counter = 1;
     remove("output.csv"); // remove prev output file
+    int first, last;
+    first_last_modules(first, last, packets, modules);
     do
     {
-        int first, last;
-        first_last_modules(first, last, packets, modules);
         int* validModules =  assign_valid_invalid(first, last, packets, modules);
         csv_output(counter++, packets, modules, validModules);
         delete[] validModules;
