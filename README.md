@@ -3,7 +3,13 @@
 <h3>
 Automated verification of packet sequences for module transitions using C++. This tool checks packet validity based on rules and creates a CSV report with results for each sequence.
 </h3>
-
+# Assumptions
+<ul>
+    <li>The minimum number of input modules is one</li>
+    <li>The first module is the one has the smallest value</li>
+    <li>The last module is the one has the largest value</li>
+    <li>Last module can be followed by itself or first modules to be a valid packet</li>
+</ul>
 ## Built With
 
 [![cpp][cpp]][cpp-url] [![gtest][gtest]][gtest-url]
