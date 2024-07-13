@@ -2,16 +2,16 @@
 
 
 int* convert_argv_to_int_array(int argc, char* argv[]) {
-    if (argc < 2) {
+    if (argc <= 2) {
         cerr << "No args to convert." << endl;
         return nullptr;
     }
 
-    int* arr = new int[argc - 2];
+    int* arr = new int[argc - 1];
 
-    for (int i = 0; i < argc-2; ++i) 
+    for (int i = 0; i < argc-1; ++i) 
     {
-        arr[i] = stoi(argv[i + 2]);
+        arr[i] = stoi(argv[i + 1]);
     }
 
     return arr;
